@@ -1,0 +1,94 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.header {
+  background-color: #bbb;
+  padding: 1rem;
+  font: 1.2rem fantasy;
+  color: darkcyan;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+.outlined {
+  border: solid grey 2px;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+input[type="text"] {
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.invalid {
+  background-color: lightcoral;
+}
+.valid {
+  background-color: lightgreen;
+}
+input[type="checkbox"] {
+  margin: 0.5rem;
+}
+
+.submit-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgb(0, 120, 120);
+  background-color: rgb(0, 171, 171);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+}
+.submit-button:active {
+  background-color: teal;
+}
+.submit-button:disabled,
+.submit-button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: default;
+}

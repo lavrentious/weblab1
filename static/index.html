@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>LabWork1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <span>Лаврентьев Лев Денисович</span>
+      <small>P3219</small>
+    </header>
+
+    <div class="container">
+      <h1>LabWork1</h1>
+      <div style="display: flex; flex-wrap: wrap">
+        <div class="outlined">
+          <h2>График</h2>
+          <img
+            src="assets/graph.png"
+            style="background-color: white; margin: 2rem"
+          />
+
+          <hr />
+
+          <form id="form">
+            <label for="xInput" style="width: 100%">
+              X:
+              <input
+                type="text"
+                id="xInput"
+                placeholder="Введите значение X от -3 до 3"
+              />
+            </label>
+            <label for="yInput">
+              Y:
+              <input
+                type="text"
+                id="yInput"
+                placeholder="Введите значение Y от -5 до 5"
+              />
+            </label>
+            <fieldset
+              class="outlined"
+              id="formRFieldset"
+              style="list-style-type: none"
+            >
+              <legend>R:</legend>
+            </fieldset>
+            <button type="submit" id="submitButton" class="submit-button">Проверить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  </body>
+</html>
