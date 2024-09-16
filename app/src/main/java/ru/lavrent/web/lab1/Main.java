@@ -9,6 +9,7 @@ import ru.lavrent.web.lab1.responses.HitCheckResponse;
 
 public class Main {
   private static Gson gson = new Gson();
+  public static final long startTime = System.nanoTime();
 
   public static void main(String args[]) {
     FCGIInterface fcgiInterface = new FCGIInterface();
