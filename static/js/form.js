@@ -1,6 +1,9 @@
 const R_VALUES = [1, 1.5, 2, 2.5, 3];
 
 export default {
+  xInput: document.getElementById("xInput"),
+  yInput: document.getElementById("yInput"),
+  formRFieldset: document.getElementById("formRFieldset"),
   setSubmitActive(isActive) {
     if (isActive)
       document.getElementById("submitButton").removeAttribute("disabled");
@@ -16,19 +19,17 @@ export default {
   },
   validateX() {
     this.resetX();
-    const xInput = document.getElementById("xInput");
-    const x = xInput.value;
+    const x = this.xInput.value;
     const isValid = this.isInt(x) && -3 <= x && x <= 3;
-    xInput.classList.add(isValid ? "valid" : "invalid");
+    this.xInput.classList.add(isValid ? "valid" : "invalid");
     this.setSubmitActive(isValid);
     return isValid;
   },
   validateY() {
     this.resetY();
-    const yInput = document.getElementById("yInput");
-    const y = yInput.value;
+    const y = this.yInput.value;
     const isValid = this.isInt(y) && -5 <= y && y <= 5;
-    yInput.classList.add(isValid ? "valid" : "invalid");
+    this.yInput.classList.add(isValid ? "valid" : "invalid");
     this.setSubmitActive(isValid);
     return isValid;
   },
@@ -36,7 +37,7 @@ export default {
     this.resetR();
     const rValues = this.getRValues();
     const isValid = rValues.length == 1;
-    formRFieldset.classList.add(isValid ? "valid" : "invalid");
+    this.formRFieldset.classList.add(isValid ? "valid" : "invalid");
     this.setSubmitActive(isValid);
     return isValid;
   },
@@ -46,16 +47,16 @@ export default {
     ).map((input) => input.value);
   },
   resetX() {
-    xInput.classList.remove("valid");
-    xInput.classList.remove("invalid");
+    this.xInput.classList.remove("valid");
+    this.xInput.classList.remove("invalid");
   },
   resetY() {
-    yInput.classList.remove("valid");
-    yInput.classList.remove("invalid");
+    this.yInput.classList.remove("valid");
+    this.yInput.classList.remove("invalid");
   },
   resetR() {
-    formRFieldset.classList.remove("valid");
-    formRFieldset.classList.remove("invalid");
+    this.formRFieldset.classList.remove("valid");
+    this.formRFieldset.classList.remove("invalid");
   },
   validate() {
     return +this.validateX() + this.validateY() + this.validateR() === 3;
@@ -63,15 +64,12 @@ export default {
   getFormData() {
     if (this.validate())
       return {
-        x: document.getElementById("xInput").value,
-        y: document.getElementById("yInput").value,
+        x: this.xInput.value,
+        y: this.yInput.value,
         r: this.getRValues()[0],
       };
   },
-  initForm(onSubmit) {
-    const xInput = document.getElementById("xInput");
-    const yInput = document.getElementById("yInput");
-    const formRFieldset = document.getElementById("formRFieldset");
+  init(onSubmit) {
     R_VALUES.forEach((value, i) => {
       const li = document.createElement("li");
       const label = document.createElement("label");
@@ -86,19 +84,19 @@ export default {
       formRFieldset.appendChild(li);
     });
 
-    xInput.addEventListener("focus", () => {
+    this.xInput.addEventListener("focus", () => {
       this.resetX();
     });
-    xInput.addEventListener("blur", () => {
+    this.xInput.addEventListener("blur", () => {
       this.validateX();
     });
-    yInput.addEventListener("focus", () => {
+    this.yInput.addEventListener("focus", () => {
       this.resetY();
     });
-    yInput.addEventListener("blur", () => {
+    this.yInput.addEventListener("blur", () => {
       this.validateY();
     });
-    formRFieldset.addEventListener("change", () => {
+    this.formRFieldset.addEventListener("change", () => {
       this.validateR();
     });
 
@@ -113,8 +111,8 @@ export default {
     });
   },
   resetForm() {
-    document.getElementById("xInput").value = "";
-    document.getElementById("yInput").value = "";
+    this.xInput.value = "";
+    this.yInput.value = "";
     Array.from(
       document.querySelectorAll('input[name="rValue"]:checked')
     ).forEach((input) => (input.checked = false));

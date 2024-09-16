@@ -1,12 +1,15 @@
 import api from "./api.js";
 import formService from "./form.js";
+import historyService from "./history.js";
 
 function onSubmit(formData, formService) {
   console.log("submitting data: ", formData);
   formService.setSubmitActive(false);
   api
     .checkHit(formData.x, formData.y, formData.r)
-    .then(() => {
+    .then((res) => {
+      historyService.addElement(res);
+      historyService.addChild(res);
       formService.resetForm();
     })
     .finally(() => {
@@ -15,7 +18,8 @@ function onSubmit(formData, formService) {
 }
 function onInit() {
   console.log("initializing form");
-  formService.initForm(onSubmit);
+  formService.init(onSubmit);
+  historyService.init();
 }
 
 onInit();

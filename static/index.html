@@ -23,7 +23,7 @@
     <div class="container">
       <h1>LabWork1</h1>
       <div style="display: flex; flex-wrap: wrap">
-        <div class="outlined">
+        <div class="outlined m-1" style="flex-grow: 1">
           <h2>График</h2>
           <img
             src="assets/graph.png"
@@ -33,22 +33,24 @@
           <hr />
 
           <form id="form">
-            <label for="xInput" style="width: 100%">
-              X:
+            <div>
+              <label for="xInput" style="width: 100%">X: </label>
               <input
                 type="text"
                 id="xInput"
                 placeholder="Введите значение X от -3 до 3"
               />
-            </label>
-            <label for="yInput">
-              Y:
+            </div>
+
+            <div>
+              <label for="yInput">Y: </label>
               <input
                 type="text"
                 id="yInput"
                 placeholder="Введите значение Y от -5 до 5"
               />
-            </label>
+            </div>
+
             <fieldset
               class="outlined"
               id="formRFieldset"
@@ -56,13 +58,24 @@
             >
               <legend>R:</legend>
             </fieldset>
-            <button type="submit" id="submitButton" class="submit-button">Проверить</button>
+            <button
+              type="submit"
+              id="submitButton"
+              class="submit-button"
+              disabled
+            >
+              Проверить
+            </button>
           </form>
+        </div>
+
+        <div class="outlined m-1" style="flex-grow: 10">
+          <h2>История</h2>
+          <ul class="list" id="history-list"></ul>
         </div>
       </div>
     </div>
 
     <script type="module" src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   </body>
 </html>
