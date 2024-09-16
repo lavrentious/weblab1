@@ -8,8 +8,9 @@ function onSubmit(formData, formService) {
   api
     .checkHit(formData.x, formData.y, formData.r)
     .then((res) => {
-      historyService.addElement(res);
-      historyService.addChild(res);
+      const { x, y, r } = formData;
+      historyService.addElement({ ...res, x, y, r });
+      historyService.addChild({ ...res, x, y, r });
       formService.resetForm();
     })
     .finally(() => {
