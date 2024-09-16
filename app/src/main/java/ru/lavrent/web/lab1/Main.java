@@ -20,21 +20,6 @@ public class Main {
   }
 
   private static void processRequest(FCGIRequest request) {
-    // System.out.println("Content-type: text/html\n\n");
-    // System.out.println("<html>");
-    // System.out.println(
-    // "<head><TITLE>FastCGI-Hello Java stdio</TITLE></head>");
-    // System.out.println("<body>");
-    // System.out.println("<H3>FastCGI-HelloJava stdio</H3>");
-    // System.out.println("request!!! " +
-    // FCGIInterface.request.params.getProperty("REQUEST_METHOD"));
-    // System.out.println("query!!! " +
-    // FCGIInterface.request.params.getProperty("QUERY_STRING"));
-    // System.out.println("</body>");
-    // System.out.println("</html>");
-    // System.out.println("Content-Type: application/json; charset=utf-8");
-    // sendResponse("{\"ok\": true}");
-    // HTTPUtils.sendResponse(gson.toJson(new HitCheckResponse(false)));
     String method = FCGIInterface.request.params.getProperty("REQUEST_METHOD");
     if (!method.equals("GET")) {
       sendError("method %s is not supported".formatted(method));
