@@ -40,10 +40,10 @@ public class Main {
   }
 
   private static void sendHit(boolean hit) {
-    HTTPUtils.sendResponse(gson.toJson(new HitCheckResponse(hit)));
+    HTTPUtils.sendResponse(gson.toJson(new HitCheckResponse(hit)), 200);
   }
 
   private static void sendError(String message) {
-    HTTPUtils.sendResponse(gson.toJson(new ErrorResponse(message)));
+    HTTPUtils.sendResponse(gson.toJson(new ErrorResponse(message)), 400);
   }
 }

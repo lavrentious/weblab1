@@ -21,7 +21,8 @@ public class HTTPUtils {
     return queryPairs;
   }
 
-  public static void sendResponse(String json) {
+  public static void sendResponse(String json, int statusCode) {
+    System.out.println("Status: " + statusCode);
     System.out.println("Content-type: application/json\n\n");
     System.out.println(json);
   }
