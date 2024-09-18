@@ -64,6 +64,8 @@ input[type="text"] {
   font-weight: 400;
   font-size: 1rem;
   box-sizing: border-box;
+  padding: 0.25rem;
+  border-radius: 5px;
 }
 
 fieldset {
