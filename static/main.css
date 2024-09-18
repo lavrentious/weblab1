@@ -100,13 +100,15 @@ input[type="checkbox"] {
   background-color: #cccccc;
   color: #666666;
 }
-
-.l-button:active {
-  background-color: teal;
+.l-button:hover:not([disabled]) {
+  background-color: rgb(0, 145, 145);
+}
+.l-button:active:not([disabled]) {
+  background-color: rgb(0, 100, 100);
 }
 .l-button:disabled,
 .l-button[disabled] {
-  opacity: 0.6;
+  opacity: 0.4;
 }
 .m-1 {
   margin: 1rem;
@@ -193,4 +195,8 @@ input[type="checkbox"] {
 
 .w-100 {
   width: 100%;
+}
+
+.text-muted {
+  color: #666666;
 }
