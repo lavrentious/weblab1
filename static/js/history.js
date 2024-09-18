@@ -44,7 +44,7 @@ export default {
     tdHit.innerHTML = obj.hit ? "✅" : "❌";
 
     const tdScriptTime = document.createElement("td");
-    tdScriptTime.innerHTML = obj.scriptTime;
+    tdScriptTime.innerHTML = Math.trunc(obj.scriptTime / 100) / 10 + " с";
 
     [tdTime, tdX, tdY, tdR, tdHit, tdScriptTime].forEach((td) =>
       tr.appendChild(td)
