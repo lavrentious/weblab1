@@ -25,6 +25,10 @@ export default {
     this.saveHistory(history);
   },
   addChild(obj) {
+    const emptyRow = document.getElementById("emptyRow");
+    if (emptyRow) {
+      emptyRow.parentNode.removeChild(emptyRow);
+    }
     const tableBody = document.getElementById("historyTableBody");
     const tr = document.createElement("tr");
 
@@ -55,12 +59,24 @@ export default {
   },
   init() {
     const history = this.loadHistory();
+    this.clearTable();
     history.forEach((obj) => this.addChild(obj));
 
     historyClearButton.addEventListener("click", () => {
-      const historyTableBody = document.getElementById("historyTableBody");
-      historyTableBody.replaceChildren([]);
+      this.clearTable();
       this.saveHistory([]);
     });
+  },
+  clearTable() {
+    const historyTableBody = document.getElementById("historyTableBody");
+    const emptyRow = document.createElement("tr");
+    emptyRow.setAttribute("id", "emptyRow");
+    const emptyCell = document.createElement("td");
+    emptyCell.colSpan = 6;
+    emptyCell.innerHTML = "Нет результатов";
+    emptyRow.appendChild(emptyCell);
+    emptyCell.classList.add("text-muted");
+    historyTableBody.replaceChildren([]);
+    historyTableBody.appendChild(emptyRow);
   },
 };
