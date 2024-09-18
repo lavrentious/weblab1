@@ -17,28 +17,40 @@ export default {
       !isNaN(parseInt(+value, 10))
     );
   },
+  checkX() {
+    const x = this.xInput.value;
+    return this.isInt(x) && -3 <= x && x <= 3;
+  },
+  checkY() {
+    const y = this.yInput.value;
+    return this.isInt(y) && -5 <= y && y <= 5;
+  },
+  checkR() {
+    const rValues = this.getRValues();
+    return rValues.length == 1;
+  },
+  checkAll() {
+    return this.checkX() && this.checkY() && this.checkR();
+  },
   validateX() {
     this.resetX();
-    const x = this.xInput.value;
-    const isValid = this.isInt(x) && -3 <= x && x <= 3;
+    const isValid = this.checkX();
     this.xInput.classList.add(isValid ? "valid" : "invalid");
-    this.setSubmitActive(isValid);
+    this.setSubmitActive(this.checkAll());
     return isValid;
   },
   validateY() {
     this.resetY();
-    const y = this.yInput.value;
-    const isValid = this.isInt(y) && -5 <= y && y <= 5;
+    const isValid = this.checkY();
     this.yInput.classList.add(isValid ? "valid" : "invalid");
-    this.setSubmitActive(isValid);
+    this.setSubmitActive(this.checkAll());
     return isValid;
   },
   validateR() {
     this.resetR();
-    const rValues = this.getRValues();
-    const isValid = rValues.length == 1;
+    const isValid = this.checkR();
     this.formRFieldset.classList.add(isValid ? "valid" : "invalid");
-    this.setSubmitActive(isValid);
+    this.setSubmitActive(this.checkAll());
     return isValid;
   },
   getRValues() {
