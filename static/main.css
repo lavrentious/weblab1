@@ -66,6 +66,10 @@ input[type="text"] {
   box-sizing: border-box;
 }
 
+fieldset {
+  margin: 0;
+}
+
 .invalid {
   background-color: lightcoral;
 }
