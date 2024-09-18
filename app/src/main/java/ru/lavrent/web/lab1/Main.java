@@ -22,8 +22,13 @@ public class Main {
 
   private static void processRequest(FCGIRequest request) {
     String method = FCGIInterface.request.params.getProperty("REQUEST_METHOD");
+    String resource = FCGIInterface.request.params.getProperty("PATH_INFO");
     if (!method.equals("GET")) {
-      sendError("method %s is not supported".formatted(method));
+      sendError("method %s is not supported".formatted(method), 405);
+      return;
+    }
+    if (resource != null && !resource.equals("/")) {
+      sendError("resource %s is not found".formatted(resource), 404);
       return;
     }
     String query = FCGIInterface.request.params.getProperty("QUERY_STRING");
@@ -35,7 +40,7 @@ public class Main {
       boolean isHit = Validator.checkHit(x, y, r);
       sendHit(isHit);
     } catch (ValidationException e) {
-      sendError(e.getMessage());
+      sendError(e.getMessage(), 400);
     }
   }
 
@@ -43,7 +48,7 @@ public class Main {
     HTTPUtils.sendResponse(gson.toJson(new HitCheckResponse(hit)), 200);
   }
 
-  private static void sendError(String message) {
-    HTTPUtils.sendResponse(gson.toJson(new ErrorResponse(message)), 400);
+  private static void sendError(String message, int statusCode) {
+    HTTPUtils.sendResponse(gson.toJson(new ErrorResponse(message)), statusCode);
   }
 }
