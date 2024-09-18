@@ -63,7 +63,7 @@ input[type="text"] {
   line-height: 1.5;
   font-weight: 400;
   font-size: 1rem;
-  width: 100%;
+  box-sizing: border-box;
 }
 
 .invalid {
