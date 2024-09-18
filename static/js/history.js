@@ -25,21 +25,42 @@ export default {
     this.saveHistory(history);
   },
   addChild(obj) {
-    const list = document.getElementById("history-list");
-    const li = document.createElement("li");
-    li.textContent = JSON.stringify(obj);
-    li.classList.add("clickable");
-    li.classList.add("deletable");
-    li.id = "history-element-" + obj.id;
-    list.appendChild(li);
+    const tableBody = document.getElementById("historyTableBody");
+    const tr = document.createElement("tr");
 
-    li.addEventListener("click", () => {
-      list.removeChild(li);
-      this.removeElement(obj.scriptTime);
-    });
+    const tdTime = document.createElement("td");
+    tdTime.innerHTML = new Date(obj.time).toLocaleString();
+
+    const tdX = document.createElement("td");
+    tdX.innerHTML = obj.x;
+
+    const tdY = document.createElement("td");
+    tdY.innerHTML = obj.y;
+
+    const tdR = document.createElement("td");
+    tdR.innerHTML = obj.r;
+
+    const tdHit = document.createElement("td");
+    tdHit.innerHTML = obj.hit ? "✅" : "❌";
+
+    const tdScriptTime = document.createElement("td");
+    tdScriptTime.innerHTML = obj.scriptTime;
+
+    [tdTime, tdX, tdY, tdR, tdHit, tdScriptTime].forEach((td) =>
+      tr.appendChild(td)
+    );
+
+    tr.id = "history-element-" + obj.time;
+    tableBody.appendChild(tr);
   },
   init() {
     const history = this.loadHistory();
     history.forEach((obj) => this.addChild(obj));
+
+    historyClearButton.addEventListener("click", () => {
+      const historyTableBody = document.getElementById("historyTableBody");
+      historyTableBody.replaceChildren([]);
+      this.saveHistory([]);
+    });
   },
 };

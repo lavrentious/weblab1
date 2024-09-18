@@ -23,7 +23,7 @@
     <div class="container">
       <h1>LabWork1</h1>
       <div style="display: flex; flex-wrap: wrap">
-        <div class="outlined m-1" style="flex-grow: 1">
+        <div class="p-1 m-1" style="flex-grow: 1">
           <h2>График</h2>
           <img
             src="assets/graph.png"
@@ -61,7 +61,7 @@
             <button
               type="submit"
               id="submitButton"
-              class="submit-button"
+              class="l-button w-100"
               disabled
             >
               Проверить
@@ -69,9 +69,26 @@
           </form>
         </div>
 
-        <div class="outlined m-1" style="flex-grow: 10">
-          <h2>История</h2>
-          <ul class="list" id="history-list"></ul>
+        <div class="m-1" style="flex-grow: 10">
+          <div>
+            <h2 style="display: inline">История</h2>
+            <button class="l-button sm muted" id="historyClearButton">
+              очистить
+            </button>
+          </div>
+          <table class="l-table w-100">
+            <thead>
+              <tr>
+                <th>Дата и время</th>
+                <th>X</th>
+                <th>Y</th>
+                <th>R</th>
+                <th>Результат</th>
+                <th>Время работы скрипта</th>
+              </tr>
+            </thead>
+            <tbody id="historyTableBody"></tbody>
+          </table>
         </div>
       </div>
     </div>

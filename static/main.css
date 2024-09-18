@@ -52,6 +52,9 @@ body {
 .outlined {
   border: solid grey 2px;
   border-radius: 5px;
+}
+
+.p-1 {
   padding: 1rem;
 }
 
@@ -72,7 +75,7 @@ input[type="checkbox"] {
   margin: 0.5rem;
 }
 
-.submit-button {
+.l-button {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   border: 1px solid rgb(0, 120, 120);
@@ -80,17 +83,23 @@ input[type="checkbox"] {
   border-radius: 5px;
   color: white;
   cursor: pointer;
-  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.submit-button:active {
-  background-color: teal;
+.l-button.sm {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
 }
-.submit-button:disabled,
-.submit-button[disabled] {
-  border: 1px solid #999999;
+.l-button.muted {
   background-color: #cccccc;
   color: #666666;
-  cursor: default;
+}
+
+.l-button:active {
+  background-color: teal;
+}
+.l-button:disabled,
+.l-button[disabled] {
+  opacity: 0.6;
 }
 .m-1 {
   margin: 1rem;
@@ -141,4 +150,40 @@ input[type="checkbox"] {
 }
 #history-list > li {
   text-wrap: wrap;
+}
+
+.l-table {
+  text-align: center;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.l-table thead,
+.l-table tfoot {
+  background-color: rgb(0, 171, 171);
+  color: white;
+}
+
+.l-table th,
+.l-table td {
+  border: 1px solid #aaa;
+  padding: 8px 10px;
+}
+.l-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.l-table tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
+.l-table tr:first-child th:last-child {
+  border-top-right-radius: 10px;
+}
+.l-table tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+.l-table tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+.w-100 {
+  width: 100%;
 }
