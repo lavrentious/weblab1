@@ -97,14 +97,20 @@ input[type="checkbox"] {
   font-size: 0.8rem;
 }
 .l-button.muted {
-  background-color: #cccccc;
-  color: #666666;
+  background-color: #ccc;
+  color: #666;
 }
 .l-button:hover:not([disabled]) {
   background-color: rgb(0, 145, 145);
 }
+.l-button.muted:hover:not([disabled]) {
+  background-color: #bbb;
+}
 .l-button:active:not([disabled]) {
   background-color: rgb(0, 100, 100);
+}
+.l-button.muted:active:not([disabled]) {
+  background-color: #aaa;
 }
 .l-button:disabled,
 .l-button[disabled] {
